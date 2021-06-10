@@ -374,6 +374,7 @@ def delocate_wheel(in_wheel,
         for package_path in find_package_dirs(wheel_dir):
             lib_path = pjoin(package_path, lib_sdir)
             lib_path_exists = exists(lib_path)
+            print ("HI", package_path, lib_path, lib_filt_func, copy_filt_func)
             copied_libs = delocate_path(package_path, lib_path,
                                         lib_filt_func, copy_filt_func)
             if copied_libs and lib_path_exists:
