@@ -52,7 +52,9 @@ def tree_libs(start_path, filt_func=None):
     lib_dict = {}
     env_var_paths = get_environment_variable_paths()
     for dirpath, dirnames, basenames in os.walk(start_path):
+      print ("WALKING LIBSANA 1", dirpath, dirnames, basenames)
         for base in basenames:
+          print ("WALKING LIBSANA 2", base)
             depending_libpath = realpath(pjoin(dirpath, base))
             if filt_func is not None and not filt_func(depending_libpath):
                 continue
@@ -63,14 +65,20 @@ def tree_libs(start_path, filt_func=None):
                 # We'll do nothing to other '@'-paths
                 # Otherwise we'll search for the library using env variables
                 if install_name.startswith('@rpath'):
+                    print ("LS3a", install_name, search_paths)
                     lib_path = resolve_rpath(install_name, search_paths)
                 elif install_name.startswith('@'):
+                    print ("LS3b", install_name)
                     lib_path = install_name
                 else:
+                    print ("LS3c", install_name)
                     lib_path = search_environment_for_lib(install_name)
+                print ("LS3.1", lib_path)
                 if lib_path in lib_dict:
+                    print ("LS3.2a", lib_path, depending_libpath, install_name)
                     lib_dict[lib_path][depending_libpath] = install_name
                 else:
+                    print ("LS3.2b", lib_path, depending_libpath, install_name)
                     lib_dict[lib_path] = {depending_libpath: install_name}
     return lib_dict
 
