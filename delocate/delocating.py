@@ -65,6 +65,7 @@ def delocate_tree_libs(lib_dict, lib_path, root_path):
     rp_root_path = realpath(root_path)
     rp_lib_path = realpath(lib_path)
     # Test for errors first to avoid getting half-way through changing the tree
+    print ("HI3", list(lib_dict.items()))
     for required, requirings in lib_dict.items():
         if required.startswith('@'):  # assume @rpath etc are correct
             # But warn, because likely they are not
@@ -286,6 +287,7 @@ def delocate_path(tree_path, lib_path,
     if copy_filt_func is not None:
         lib_dict = dict((key, value) for key, value in lib_dict.items()
                         if copy_filt_func(key))
+    print ("HI2", lib_dict, lib_path, tree_path)
     copied = delocate_tree_libs(lib_dict, lib_path, tree_path)
     return copy_recurse(lib_path, copy_filt_func, copied)
 
