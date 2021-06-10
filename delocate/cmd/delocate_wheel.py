@@ -42,6 +42,7 @@ def main():
                help="Architectures that all wheel libraries should "
                "have (from 'intel', 'i386', 'x86_64', 'i386,x86_64')")])
     (opts, wheels) = parser.parse_args()
+    opts.verbose = True
     if len(wheels) < 1:
         parser.print_help()
         sys.exit(1)
