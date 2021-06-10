@@ -78,4 +78,5 @@ def main():
 
 
 if __name__ == '__main__':
+    print ("HELLO, USING DEBUGGING CODE!")
     main()
