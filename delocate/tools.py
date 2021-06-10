@@ -217,7 +217,9 @@ def get_install_names(filename):
     lines = _cmd_out_err(['otool', '-L', filename])
     if not _line0_says_object(lines[0], filename):
         return ()
+    
     names = tuple(parse_install_name(line)[0] for line in lines[1:])
+    print ("IN tools get_install_name", lines, names)
     install_id = get_install_id(filename)
     if install_id is not None:
         assert names[0] == install_id
