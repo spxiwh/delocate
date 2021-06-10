@@ -52,9 +52,9 @@ def tree_libs(start_path, filt_func=None):
     lib_dict = {}
     env_var_paths = get_environment_variable_paths()
     for dirpath, dirnames, basenames in os.walk(start_path):
-      print ("WALKING LIBSANA 1", dirpath, dirnames, basenames)
+        print ("WALKING LIBSANA 1", dirpath, dirnames, basenames)
         for base in basenames:
-          print ("WALKING LIBSANA 2", base)
+            print ("WALKING LIBSANA 2", base)
             depending_libpath = realpath(pjoin(dirpath, base))
             if filt_func is not None and not filt_func(depending_libpath):
                 continue
