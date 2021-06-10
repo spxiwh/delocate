@@ -60,6 +60,7 @@ def tree_libs(start_path, filt_func=None):
                 continue
             rpaths = get_rpaths(depending_libpath)
             search_paths = rpaths + env_var_paths
+            print ("WALKING LIBSANA 2", depending_libpath)
             for install_name in get_install_names(depending_libpath):
                 # If the library starts with '@rpath' we'll try and resolve it
                 # We'll do nothing to other '@'-paths
