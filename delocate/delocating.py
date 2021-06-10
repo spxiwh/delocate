@@ -18,7 +18,7 @@ from .tmpdirs import TemporaryDirectory
 from .wheeltools import rewrite_record, InWheel
 
 # Prefix for install_name_id of copied libraries
-DLC_PREFIX = '/DLC/'
+DLC_PREFIX = '/DMT/'
 
 
 class DelocationError(Exception):
